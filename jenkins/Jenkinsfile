@@ -17,9 +17,11 @@ pipeline {
 
            stage('mycheck') {
               steps {
-                sh 'majorversion=`grep version package.json | cut -c  15-17` '
-                sh 'echo "$majorversion"'
-                sh "mkdir -p mama/test/$majorversion"
+              bash '''#!/bin/bash
+                 majorversion=`grep version package.json | cut -c  15-17` 
+                 echo $majorversion
+                 mkdir  -p mama/test/$majorversion
+               '''
               }
            }
       //  stage('Deliver') {
