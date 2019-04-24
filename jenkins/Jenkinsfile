@@ -1,4 +1,3 @@
-def majorversion = ''
 pipeline {
     agent  any 
     environment {
