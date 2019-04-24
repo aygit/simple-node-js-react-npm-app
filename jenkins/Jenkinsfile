@@ -31,7 +31,7 @@ pipeline {
                  script: "grep version package.json | cut -c  15-17", 
                  returnStdout: true
                 )
-                 mkdir  -p mama/test/papa/${majorversion}
+            //     mkdir  -p mama/test/papa/${majorversion}
               
               }
            }
