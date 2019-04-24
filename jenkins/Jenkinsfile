@@ -1,3 +1,4 @@
+def majorversion = ''
 pipeline {
     agent  any 
     environment {
@@ -15,23 +16,21 @@ pipeline {
             }
         }
 
-           stage('mycheck') {
-              steps {
-              sh '''#!/bin/bash
-                 majorversion=`grep version package.json | cut -c  15-17` 
-                 echo $majorversion
-                 mkdir  -p mama/test/$majorversion
-               '''
-              }
-           }
+        //   stage('mycheck') {
+        //      steps {
+        //      sh '''#!/bin/bash
+        //         majorversion=`grep version package.json | cut -c  15-17` 
+        //         echo $majorversion
+        //          mkdir  -p mama/test/$majorversion
+        //       '''
+        //      }
+        //   }
         
            stage('mycheck2') {
               steps {
-              majorversion = sh (
-                 script: "grep version package.json | cut -c  15-17", 
-                 returnStdout: true
-                )
-            //     mkdir  -p mama/test/papa/${majorversion}
+              script {
+                 majorversion = sh(returnStdout: true, script:  "grep version package.json | cut -c  15-17")
+                } 
               
               }
            }
@@ -39,6 +38,7 @@ pipeline {
              stage('checkoutput') {
               steps {
                    echo 'hello this is ${majorversion}'
+                   sh "mkdir papa/timalo/${majorversion}"
 
               }
            }
