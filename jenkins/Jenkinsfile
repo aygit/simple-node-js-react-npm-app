@@ -28,13 +28,17 @@ pipeline {
            stage('mycheck2') {
               steps {
               majorversion = sh (
-                 script: "grep version package.json | cut -c  15-17" 
+                 script: "grep version package.json | cut -c  15-17", 
                  returnStdout: true
                 )
                  mkdir  -p mama/test/papa/${majorversion}
               
               }
            }
+
+             stage('checkoutput') {
+              steps {
+                   echo 'hello this is ${majorversion}'
       //  stage('Deliver') {
       //      steps {
       //          sh './jenkins/scripts/deliver.sh'
