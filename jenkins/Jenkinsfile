@@ -37,8 +37,8 @@ pipeline {
 
              stage('checkoutput') {
               steps {
-                   echo 'hello this is ${majorversion}'
-                   sh "mkdir papa/timalo/${majorversion}"
+                   echo "hello this is ${majorversion}"
+                   sh "mkdir -p papa/timalo/${majorversion}"
 
               }
            }
